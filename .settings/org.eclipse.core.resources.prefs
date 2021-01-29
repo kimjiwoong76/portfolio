@@ -8,6 +8,7 @@ encoding//src/main/webapp/WEB-INF/views/common/error.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/error400.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/mail.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/inc/paging.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/user/login__.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/user/reg_welcome.jsp=UTF-8
