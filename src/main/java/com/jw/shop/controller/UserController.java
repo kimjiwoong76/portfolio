@@ -100,7 +100,6 @@ public class UserController {
 
 	@RequestMapping("/userJoinProc.do")
 	public String userJoinProc(UserVO vo, String command, Model model, HttpSession session) throws Exception{
-		vo.getShop_nickname();
 		return userService.userJoinProc(vo, command, model, session);
 	}
 	
@@ -113,7 +112,6 @@ public class UserController {
 	public String userFail(){
 		return "/user/fail";
 	}
-	
 	
 	
 }

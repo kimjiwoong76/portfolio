@@ -13,7 +13,6 @@ public class UserInterceptor implements HandlerInterceptor {
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
 		boolean sessionFlag = false;
 		System.out.println("인터셉터 실행");
 		UserVO vo = (UserVO) request.getSession().getAttribute("shopMember");

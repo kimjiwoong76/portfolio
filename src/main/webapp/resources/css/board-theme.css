@@ -1,0 +1,189 @@
+[class^="board-list-"] .title a,
+[class*=" board-list-"] .title a {
+    color: #1f1f1f
+}
+
+[class^="board-list-"] .title a:hover,
+[class*=" board-list-"] .title a:hover {
+    color: #598ba0 !important
+}
+
+[class^="board-list-"] .title a strong,
+[class*=" board-list-"] .title a strong {
+    color: #598ba0
+}
+
+.board-notice .board-notice-item .category {
+    border-color: #598ba0;
+    color: #598ba0
+}
+
+.board-top-utils .predict-layer-items em {
+    color: #598ba0
+}
+
+.board-list-card .board-items[data-is-legacy="true"]:hover:after {
+    background: rgba(89, 139, 160, 0.9)
+}
+
+.board-search-result .count {
+    color: #598ba0
+}
+
+.view-header .view-title {
+    color: #1f1f1f
+}
+
+.view-utils .co-btn-like em {
+    color: #598ba0
+}
+
+.view-signature .writer a {
+    color: #1f1f1f
+}
+
+.view-recent .slick-slider .slick-dots.slick-active button {
+    background-color: #598ba0
+}
+
+.view-recent-items[data-is-current="true"] .number {
+    color: #598ba0
+}
+
+.nc-community-comment {
+    color: #1f1f1f
+}
+
+.nc-community-comment a {
+    color: #1f1f1f
+}
+
+.comment-header .comment-title {
+    color: #1f1f1f
+}
+
+.comment-header .comment-title span {
+    color: #598ba0
+}
+
+.comment-header .comment-utils .co-btn:hover,
+.comment-header .comment-utils .co-btn.is-active {
+    color: #598ba0
+}
+
+.comment-form.is-focus .comment-form-textarea,
+.comment-form.is-focus .comment-toolbar {
+    border-color: #598ba0
+}
+
+.comment-form.is-focus .btn-confirm {
+    border-color: #598ba0;
+    color: #598ba0
+}
+
+.comment-article .comment-contents {
+    color: #1f1f1f
+}
+
+.comment-article-more .btn-article-more {
+    color: #598ba0
+}
+
+.comment-article-more .btn-article-more:before,
+.comment-article-more .btn-article-more:after {
+    background-color: #598ba0
+}
+
+.btn-write,
+.co-btn-write,
+.co-btn-write-submit {
+    color: #fff;
+    border: 1px solid #598ba0;
+    background-color: #598ba0
+}
+
+.btn-write:hover,
+.co-btn-write:hover,
+.co-btn-write-submit:hover {
+    color: #fff;
+    border-color: #486c80;
+    background-color: #486c80
+}
+
+.name-np {
+    color: #1f1f1f
+}
+
+.name-np a,
+.name-np button,
+.name-np button:hover,
+.name-np button:focus {
+    color: #1f1f1f
+}
+
+.name-game {
+    color: #1f1f1f
+}
+
+.name-game a,
+.name-game button,
+.name-game button:hover,
+.name-game button:focus {
+    color: #1f1f1f
+}
+
+.server,
+.servername {
+    color: #1f1f1f
+}
+
+.clan,
+.guild {
+    color: #1f1f1f
+}
+
+.community-level-name {
+    border-color: #598ba0;
+    color: #598ba0
+}
+
+.nc-community-report .report-remain {
+    color: #598ba0
+}
+
+.nc-community-report .report-btn-wrap .co-btn-finish {
+    background-color: #598ba0
+}
+
+.nc-community-report .report-btn-wrap .co-btn-cancel {
+    border-color: #598ba0;
+    color: #598ba0
+}
+
+.board-view {
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.page-cartoon .view-body {
+    max-width: 880px
+}
+
+[class*=" board-list-"] .title .category,
+[class^="board-list-"] .title .category {
+    color: #598ba0
+}
+
+.fe-btn-layer.is-fill {
+    background: #598ba0
+}
+
+.ui-checkbox input:checked + label .icon:after,
+.ui-checkbox input:checked + label .icon:before {
+    background-color: #598ba0
+}
+
+.ui-datepicker .ui-state-active a {
+    background: #598ba0 !important
+}

@@ -43,30 +43,19 @@
                     </ul>
                 </div>
                 -->
-                <ul class="board">
-               <c:forEach var="result" items="${list}">
-               <c:if test="${sessionFlag}">
-               	<a href="#!">글쓰기</a>
-               </c:if>
-			        <li class="board-items">
-			            <div class="title">
-			                <a href="/board/view/${result.B_NO}">${result.B_SUBJECT}</a>
-<!-- 			                <div class="count"> -->
-<!-- 			                    <span class="count-like">1</span> -->
-<!-- 			                    <span class="count-comment">3</span> -->
-<!-- 			                </div> -->
-			            </div>
-			            <div class="info">
-			                <span class="writer">${result.USER_ID }</span>
-			                <span class="date">
-			                	<fmt:formatDate value="${result.B_DATE}" pattern="yy.MM.dd"/>
-			                </span>
-			                <span class="hit">${result.B_COUNT }</span>
-			            </div>
-			        </li>
-               </c:forEach>
-               </ul>
-               <%@ include file="/WEB-INF/views/inc/paging.jsp"%>
+               <div class="board-view">
+             		<div class="view-header">
+             			<h2 class="view-title">${board.b_subject}</h2>
+             			<div class="view-info">
+             				<span class="writer">${board.user_id}</span>
+             				<span class="date">${board.b_date}</span>
+             				<span class="hit">${board.b_count}</span>
+             			</div>	
+             		</div>
+             		<div class="view-body">
+             			${board.b_content}
+             		</div>
+               </div>
             </div>
         </div>
     </div>

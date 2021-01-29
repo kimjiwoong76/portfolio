@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	String cp = request.getContextPath();
 	request.setCharacterEncoding("UTF-8");
@@ -24,6 +25,10 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />">
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/sub-style.css" />">
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/board.css" />">
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/board-theme.css" />">
 <link rel="stylesheet" href="<c:url value="/resources/css/slick.css" />">
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/slick-theme.css" />">
@@ -93,9 +98,10 @@
 			<div class="m-menu-box">
 				<div class="m-menu-popul">
 					<ul class="clearfix">
-						<li><a href="/product/list.do?cateCode=남자 의류">MAN</a></li>
-						<li><a href="/product/list.do?cateCode=여자 의류">WOMAN</a></li>
-						<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">CHILDREN</a></li>
+						<li><a href="/product/list.do?cateCode=남자 의류">남자옷</a></li>
+						<li><a href="/product/list.do?cateCode=여자 의류">여자옷</a></li>
+						<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">아이옷(미구현)</a></li>
+						<li><a href="/board/list">게시판</a></li>
 					</ul>
 				</div>
 			</div>
@@ -198,9 +204,10 @@
 					</div>
 					<div class="pc-menu">
 						<ul class="clearfix">
-							<li><a href="/product/list.do?cateCode=남자 의류">Man</a></li>
-							<li><a href="/product/list.do?cateCode=여자 의류">Woman</a></li>
-							<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">Children</a></li>
+							<li><a href="/product/list.do?cateCode=남자 의류">남자옷</a></li>
+							<li><a href="/product/list.do?cateCode=여자 의류">여자옷</a></li>
+							<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">아이옷(미구현)</a></li>
+							<li><a href="/board/list">게시판</a></li>
 						</ul>
 					</div>
 				</div>

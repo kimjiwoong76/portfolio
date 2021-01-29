@@ -26,6 +26,12 @@ public class CommonController {
 		this.userMapper = userMapper;
 	}
 	
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "/test";
+	}
+	
 	@RequestMapping("mailSender.do")
 	public String mailSender(UserVO vo, HttpServletResponse response) throws IOException {
 		
@@ -41,7 +47,7 @@ public class CommonController {
 			// 받는사람 이메일
 			String tomail = result.getShop_email();
 			// 제목
-			String title = "마이스토리" + result.getShop_name() +"님 아이디 찾기 결과 입니다.";
+			String title = "마이스토리 " + result.getShop_name() +"님 아이디 찾기 결과 입니다.";
 			// 내용
 			String content = 
 					"<html><body>" +

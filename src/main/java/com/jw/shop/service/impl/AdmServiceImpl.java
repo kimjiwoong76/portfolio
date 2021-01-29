@@ -67,7 +67,7 @@ public class AdmServiceImpl implements AdmService {
 				}
 			}
 			int listCnt = buyMapper.intBuySelect(vo);
-			Paging paging = new Paging(listCnt, curPage);
+			Paging paging = new Paging(listCnt, curPage, 8);
 	        vo.setStartIndex(paging.getStartIndex());
 	        vo.setCntPerPage(paging.getPageSize());
 			model.addAttribute("man", man);

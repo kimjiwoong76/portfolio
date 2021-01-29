@@ -5,12 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://wstatic-cdn.plaync.com/common/js/lib/jquery-3.1.0.min.js"></script>
 </head>
 <body>
-	<form method="post" action="/formFile.do" enctype="multipart/form-data">
-		<br> <label>파일:</label> <input type="file" name="file1">
-		<br>
-		<br> <input type="submit" value="upload">
-	</form>
+	 <script>
+        $(function() {
+                $.ajax({
+                    url: 'http://mystory.duckdns.org:8080/board/list-json',
+                    type: 'get',
+                    dataType: 'json',
+                    success:function(data){
+//                     	var obj = JSON.parse(data);
+                        console.log(data[1].B_NO);
+                    }
+                })
+        });
+    </script>
 </body>
 </html>

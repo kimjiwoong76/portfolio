@@ -27,6 +27,20 @@ public class BoardVO {
 	private Date b_date;
 	private Date b_modify;
 	private int b_count;
+	private int startIndex;
+	private int cntPerPage;
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+	public void setCntPerPage(int cntPerPage) {
+		this.cntPerPage = cntPerPage;
+	}
 	public int getB_no() {
 		return b_no;
 	}

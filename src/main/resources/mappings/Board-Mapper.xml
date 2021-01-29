@@ -4,9 +4,29 @@
 
 <mapper namespace="com.jw.shop.mapper.BoardMapper">
 
-	<select id="b_select" parameterType="int" resultType="board">
-		select * from board
+	<select id="b_select" parameterType="board" resultType="map">
+		select b.*, rownum from (
+    		select a.*, rownum as rnum from (    
+        		select * from board order by b_no desc
+    		) a
+		) b where rnum <![CDATA[>=]]> #{startIndex} and rnum <![CDATA[<=]]> #{cntPerPage}
 	</select>
+	<select id="boardView" parameterType="board" resultType="board">
+		select * from board where b_no = #{b_no}
+	</select>
+	<update id="boardRead">
+		update board set b_count = b_count+1 where b_no = #{bno}
+	</update>
+	
+	<select id="boardCnt" parameterType="int" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<insert id="boardInsert">
+		INSERT INTO board (B_NO, USER_ID, B_SUBJECT, B_CONTENT, B_DATE)
+		VALUES (BOARD_SEQ.nextval, #{user_id}, #{b_subject}, #{b_content}, TO_CHAR(sysdate, 'yy/mm/dd'))
+	</insert>
+	
 
 
 </mapper>

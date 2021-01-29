@@ -39,7 +39,8 @@ public class ProductServiceImpl implements ProductService {
 			vo.setCateCode(cateCode);	
 			// 전체리스트 개수
 	        int listCnt = prdMapper.prdSelectCnt(vo);
-	        Paging paging = new Paging(listCnt, curPage);
+	        System.out.println("리스트씨엔티" + listCnt);
+	        Paging paging = new Paging(listCnt, curPage, 8);
 	        vo.setStartIndex(paging.getStartIndex());
 	        System.out.println(paging.getStartIndex());
 	        vo.setCntPerPage(paging.getPageIndex());
