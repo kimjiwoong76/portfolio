@@ -4,18 +4,31 @@
 
 <mapper namespace="com.jw.shop.mapper.BoardMapper">
 
+<!-- 	<select id="b_select" parameterType="board" resultType="map"> -->
+<!-- 		select b.*, rownum from ( -->
+<!--     		select a.*, rownum as rnum from (     -->
+<!--         		select * from board order by b_no desc -->
+<!--     		) a -->
+<!-- 		) b where rnum <![CDATA[>=]]> #{startIndex} and rnum <![CDATA[<=]]> #{cntPerPage} -->
+<!-- 	</select> -->
+
 	<select id="b_select" parameterType="board" resultType="map">
-		select b.*, rownum from (
+		select (select count (*) from reply where bo_no = b_no) as reply_count,
+		b.*, rownum from (
     		select a.*, rownum as rnum from (    
         		select * from board order by b_no desc
     		) a
 		) b where rnum <![CDATA[>=]]> #{startIndex} and rnum <![CDATA[<=]]> #{cntPerPage}
 	</select>
+
 	<select id="boardView" parameterType="board" resultType="board">
 		select * from board where b_no = #{b_no}
 	</select>
 	<update id="boardRead">
 		update board set b_count = b_count+1 where b_no = #{bno}
+	</update>
+	<update id="boardUpdate">
+		update board set b_subject = #{b_subject}, b_content = ${b_content} where b_no = #{b_no}
 	</update>
 	
 	<select id="boardCnt" parameterType="int" resultType="int">

@@ -15,5 +15,6 @@
 		<typeAlias type="com.jw.shop.domain.CartVO" alias="cart"></typeAlias>
 		<typeAlias type="com.jw.shop.domain.BuyVO" alias="buy"></typeAlias>
 		<typeAlias type="com.jw.shop.domain.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.jw.shop.domain.ReplyVO" alias="reply"></typeAlias>
 	</typeAliases>
 </configuration>

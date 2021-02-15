@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jw.shop.mapper.ReplyMapper">
+
+
+
+	<insert id="replyInsert">
+		INSERT INTO reply (re_no, bo_no, re_content, user_id, re_date)
+		VALUES (REPLY_SEQ.nextval, #{bo_no}, #{re_content}, #{user_id}, TO_CHAR(sysdate, 'yy/mm/dd'))
+	</insert>
+	<select id="replyRead" resultType="reply">
+		select * from reply where bo_no = #{b_no} order by re_no desc
+	</select>
+	<update id="replyUpdate">
+		update board set b_count = b_count+1 where b_no = #{bno}
+	</update>
+	<delete id="replyDelete">
+	</delete>
+	
+	
+
+</mapper>

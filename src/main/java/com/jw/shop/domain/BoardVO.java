@@ -7,7 +7,7 @@ public class BoardVO {
 	
 //	create table board(  							게시판 테이블 생성
 //	    b_no number(5) not null,					게시판 번호
-//		private int b_depth;						게시판 뎁스
+//		int b_depth;						게시판 뎁스
 //	    user_id varchar2(255) not null,				유저 아이디
 //	    user_pw varchar2(255) not null,				유저 패스워드
 //	    b_subject varchar2(255) not null,			게시판 제목
@@ -29,6 +29,13 @@ public class BoardVO {
 	private int b_count;
 	private int startIndex;
 	private int cntPerPage;
+	private int reply_count;
+	public int getReply_count() {
+		return reply_count;
+	}
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
+	}
 	public int getStartIndex() {
 		return startIndex;
 	}

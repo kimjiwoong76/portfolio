@@ -193,7 +193,7 @@
          <ul class="message_wrap">
            <li class="txt01">DEVELOPER</li>
            <li class="txt02">PORTFOLIO</li>
-<!--            <li class="txt03">HYBRID</li> -->
+           <li class="txt03">Please ScrollDown</li>
          </ul>
        </div>
        

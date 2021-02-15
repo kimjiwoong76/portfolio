@@ -5,6 +5,7 @@
 		location.href = "/board/list/"+page;
 	}
 </script>
+
 <div class="paging">
                 	<div>
 	                    <c:if test="${paging.curRange ne 1 }">

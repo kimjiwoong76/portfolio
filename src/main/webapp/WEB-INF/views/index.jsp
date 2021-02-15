@@ -42,7 +42,7 @@
 							dummy.
 						</p>
 						<div class="more-btn">
-							<a href="/product/list.do">SHOP NOW</a>
+							<a href="/product/list.do?cateCode=남자 의류">SHOP NOW</a>
 						</div>
 					</div>
 				</div>

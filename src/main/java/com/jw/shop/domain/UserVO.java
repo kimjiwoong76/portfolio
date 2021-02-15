@@ -22,7 +22,14 @@ public class UserVO {
 	private String shop_gender;
 	private String regdate;
 	private String sql_ok;
+	private int grade;
 	
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
 	public String getSql_ok() {
 		return sql_ok;
 	}

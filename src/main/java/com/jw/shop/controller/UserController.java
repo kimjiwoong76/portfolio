@@ -32,8 +32,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/loginProc.do")
-	public String loginProc(UserVO vo, Model model, HttpSession session) throws Exception {
-		return userService.loginProc(vo, model, session);
+	public String loginProc(UserVO vo, Model model, HttpSession session, HttpServletRequest request) throws Exception {
+		return userService.loginProc(vo, model, session, request);
 	}
 
 	@RequestMapping("/logout.do")

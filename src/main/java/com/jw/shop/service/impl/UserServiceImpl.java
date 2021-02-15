@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
 	
 	// 로그인 process
 	@Override
-	public String loginProc(UserVO vo, Model model, HttpSession session) throws Exception {
+	public String loginProc(UserVO vo, Model model, HttpSession session, HttpServletRequest request) throws Exception {
 		if(vo.getShop_id() == null) {
 			return "/user/login";
 		} else {
@@ -129,6 +129,8 @@ public class UserServiceImpl implements UserService {
 				String raw = vo.getShop_pwd();
 				if(passwordEncoder.matches(raw, rawPassword)) {
 					// 로그인 성공 (실제 암호와 담긴 암호 디코딩하여 비교)
+					String referer = request.getHeader("referer");
+					request.getSession().setAttribute("redirectURI", referer);
 					UserVO login = userMapper.userLoginProc(vo);
 					session.setAttribute("shopMember", login);
 					

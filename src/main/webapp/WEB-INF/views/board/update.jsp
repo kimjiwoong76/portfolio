@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/inc/header.jsp"%>
+<script src="/resources/ckeditor/ckeditor.js"></script>
 <!-- 
 <script>
 	var cate = '<c:out value="${cate}" />';
@@ -20,7 +21,7 @@
             <div class="row">
                 <div class="sub-tit">
                     <p>COMMUNITY</p>
-                    <h3>고객센터</h3>
+                    <h3>고객센터 글쓰기</h3>
                 </div>
                 <!--  
                 <div class="sub-category">
@@ -43,44 +44,44 @@
                     </ul>
                 </div>
                 -->
-                <c:if test="${shopMember.grade >= 1}">
-				 <div class="board-opt">
-				 		<a href="/board/write">글쓰기</a>
-				 </div>
-				 </c:if> 
-                <ul class="board board-list-default">
-               <c:forEach var="result" items="${list}">
-			        <li class="board-items">
-			            <div class="title">
-			                <a href="/board/view/${result.B_NO}">${result.B_SUBJECT}</a>
-			                <c:if test="${result.REPLY_COUNT >= 1}">
-			                <div class="count">
-				                <span class="count-comment">
-				                	<em>[${result.REPLY_COUNT}]</em>
-				                </span>
-			                </div>
-			                </c:if>
-<!-- 			                <div class="count"> -->
-<!-- 			                    <span class="count-like">1</span> -->
-<!-- 			                    <span class="count-comment">3</span> -->
-<!-- 			                </div> -->
-			            </div>
-			            <div class="info">
-			                <span class="writer">${result.USER_ID }</span>
-			                <span class="date">
-			                	<fmt:formatDate value="${result.B_DATE}" pattern="yy.MM.dd"/>
-			                </span>
-			                <span class="hit">${result.B_COUNT }</span>
-			            </div>
-			        </li>
-               </c:forEach>
-               </ul>
+               	<div class="board-write">
+               		<form action="/board/update/process" class="write-form">
+               			<div class="write-subject">
+               				<input type="text" name="b_subject" class="b_subject" value="${board.b_subject}" />
+               			</div>
+               			<div class="write-content">
+               				<textearea name=b_content class="write-des" id="write-des">${board.b_content}</textearea>
+               			</div>
+               			<div class="write-btn">
+               				<button type="button" onclick="history.back(-1)" class="cancel">취소</button>
+               				<button type="submit" class="submit">수정</button>
+               			</div>
+               		</form>
+               	</div>
                
-               <%@ include file="/WEB-INF/views/inc/paging.jsp"%>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+	var ckeditor_config = {
+			resize_enaleb : false,
+			enterMode : CKEDITOR.ENTER_BR,
+			shiftEnterMode : CKEDITOR.ENTER_P,
+			filebrowserUploadUrl : "/editorUpload.do"
+	};
+	CKEDITOR.replace("b_content", ckeditor_config);
+	CKEDITOR.instances.b_content.setData(' ${board.b_content} ');
+	
+	$(function(){
+		$(".write-form").submit(function(){
+			if($(".b_subject").val() == ""){
+				alert("제목을 입력하세요");
+				return false;
+			}
+		});
+	});
+	
+</script>
 
 <%@ include file="/WEB-INF/views/inc/footer.jsp"%>

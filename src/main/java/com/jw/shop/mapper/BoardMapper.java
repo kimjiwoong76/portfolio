@@ -11,4 +11,5 @@ public interface BoardMapper {
 	void boardInsert(BoardVO vo);
 	BoardVO boardView(Integer bno);
 	int boardRead(Integer bno);
+	BoardVO boardUpdate(BoardVO vo);
 }

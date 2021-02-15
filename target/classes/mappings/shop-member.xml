@@ -17,7 +17,7 @@
 	</select>
 	-->
 	<select id="userLoginProc" resultType="regMember">
-		select shop_id, shop_name from shop_member where shop_id = #{shop_id}
+		select shop_id, shop_name, grade from shop_member where shop_id = #{shop_id}
 	</select>
 	<select id="userLoginProc2" resultType="regMember">
 		select shop_id, shop_pwd from shop_member where shop_id = #{shop_id}

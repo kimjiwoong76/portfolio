@@ -1534,7 +1534,7 @@ a.pswp__share--download:hover {
 .co-btn-wrap .right,
 .comment-form .comment-toolbar .right,
 .view-bottom .right {
-    display: table-cell;
+/*     display: table-cell; */
     text-align: right
 }
 
@@ -6244,7 +6244,7 @@ body.layer-is-active .co-layer-modal {
     display: block;
     overflow: auto;
     width: 100%;
-    min-height: 21px !important;
+    min-height: 49px !important;
     margin: 0;
     padding: 0;
     border: 0;
@@ -6262,17 +6262,18 @@ body.layer-is-active .co-layer-modal {
 }
 
 .comment-form .comment-form-textarea {
-    height: 75px;
+    height: 140px;
     padding: 12px 16px 0;
     border: 1px solid #c7c7cc
 }
 
 .comment-form .comment-form-textarea textarea {
-    height: 20px
+    height: 80px;
+    width:100%;
 }
 
 .comment-form .comment-toolbar {
-    display: none;
+    display: block;
     position: absolute;
     height: 40px;
     border-top: 1px solid #efefef;
@@ -7483,7 +7484,7 @@ body.layer-is-active .co-layer-modal {
     }
 
     .view-body {
-        min-height: 400px;
+        min-height: 250px;
         font-size: 15px;
         line-height: 24px
     }
@@ -7506,7 +7507,7 @@ body.layer-is-active .co-layer-modal {
     .comment-article,
     .comment-article-delete,
     .comment-article-reply {
-        padding-left: 70px
+        padding-left: 0px
     }
 
     .comment-article.is-highlight,
@@ -8219,4 +8220,52 @@ body.layer-is-active .co-layer-modal {
         background-image: url(/uikit/nccommunity-share/img/share@2x.png);
         background-size: 70px auto
     }
+}
+
+.board-write input::placeholder,
+.board-write textarea::placeholder{
+	color:#999;
+}
+.write-subject{
+	margin-bottom:20px;
+}
+.write-subject input{
+	width:100%;
+	border:1px solid #dcdcdc;
+	padding:10px 15px;
+	box-sizing:border-box;
+}
+.write-btn{
+	margin-top:20px;
+}
+.write-btn button{
+	padding:5px 20px;
+	box-sizing:border-box;
+	border-radius:15px;
+}
+.write-btn .cancel{
+	float:left;
+	background:#999;
+	color:#fff;
+}
+.write-btn .submit{
+	float:right;
+	background:#000;
+	color:#fff;
+}
+
+.board-opt{
+	text-align:right;
+	margin-bottom:20px;
+	border-top:1px solid #dedede;
+	border-bottom:1px solid #dedede;
+	padding:10px 0;
+}
+.board-opt a{
+	display:inline-block;
+	padding:7px 14px;
+	box-sizing:border-box;
+	border-radius:20px;
+	background:#000;
+	color:#fff;
 }

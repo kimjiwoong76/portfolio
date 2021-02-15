@@ -16,7 +16,7 @@ public interface UserService {
 	String login(Model model, HttpSession session);
 
 	// 로그인
-	String loginProc(UserVO vo, Model model, HttpSession session) throws Exception;
+	String loginProc(UserVO vo, Model model, HttpSession session, HttpServletRequest request) throws Exception;
 
 	// 로그아웃
 	String logout(HttpSession session);
