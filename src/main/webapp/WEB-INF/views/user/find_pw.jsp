@@ -5,7 +5,7 @@
 <div class="sub-content">
 	<div class="form">
 		<div class="form_head">
-			<p>아이디찾기</p>
+			<p>비밀번호찾기</p>
 		</div>
 		<div class="login_inner">
 			<div class="form_inner">

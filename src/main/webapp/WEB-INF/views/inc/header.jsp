@@ -102,7 +102,6 @@
 					<ul class="clearfix">
 						<li><a href="/product/list.do?cateCode=남자 의류">Man</a></li>
 						<li><a href="/product/list.do?cateCode=여자 의류">Woman</a></li>
-						<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">Children(미구현)</a></li>
 						<li><a href="/board/list">Board</a></li>
 					</ul>
 				</div>
@@ -208,7 +207,7 @@
 						<ul class="clearfix">
 							<li><a href="/product/list.do?cateCode=남자 의류">Man</a></li>
 							<li><a href="/product/list.do?cateCode=여자 의류">Woman</a></li>
-							<li><a href="#!" onClick="alert('미구현 상품 입니다'); return false">Children(미구현)</a></li>
+							
 							<li><a href="/board/list">Board</a></li>
 						</ul>
 					</div>

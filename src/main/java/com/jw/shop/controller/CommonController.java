@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.jw.shop.domain.UserVO;
 import com.jw.shop.mapper.UserMapper;
@@ -21,6 +22,9 @@ public class CommonController {
 	@Autowired
 	private JavaMailSender mailSender;
 	private final UserMapper userMapper;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	public CommonController(UserMapper userMapper) {
 		this.userMapper = userMapper;
@@ -87,13 +91,13 @@ public class CommonController {
 	
 	@RequestMapping("mailSender2.do")
 	public String mailSender2(UserVO vo, HttpServletResponse response) throws IOException {
-		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		UserVO result = userMapper.userFindId(vo);
 		if(result == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
+			
 			out.println("<script>alert('입력한 정보가 잘못되었습니다.'); history.go(-1);</script>");
-			out.flush();
+			
 		} else {
 			
 			
@@ -101,7 +105,7 @@ public class CommonController {
 				
 				// 인증번호 전송
 				String key = "";
-				for(int i = 0; i < 24; i++) {
+				for(int i = 0; i < 10; i++) {
 					key += (char) ((Math.random() * 26) + 97);
 				}
 				
@@ -131,10 +135,13 @@ public class CommonController {
 					messageHelper.setSubject(title);
 					System.out.println("제목" + title);
 					messageHelper.setText(content, true);
-					
-					userMapper.userPwUpdateProc(key);
+					String encPassword = passwordEncoder.encode(key);
+					vo.setShop_pwd(encPassword);
+					System.out.println(vo.toString());
+					userMapper.userPwUpdateProc(vo);
 					
 					mailSender.send(message);
+					out.println("<script>alert('메일이 전송 되었습니다.');</script>");
 					
 					
 				} catch (Exception e) {
@@ -145,6 +152,7 @@ public class CommonController {
 			
 			
 		}
+		out.flush();
 		
 		
 		return "/user/login";

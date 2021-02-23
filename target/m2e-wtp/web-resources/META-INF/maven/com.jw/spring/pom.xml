@@ -245,6 +245,13 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.3</version>
 		</dependency>
+		
+<dependency>
+    <groupId>com.fommil</groupId>
+    <artifactId>jsonformat_2.12</artifactId>
+    <version>1.0.0-RC9</version>
+</dependency>
+		
 
 		<!-- Java Mail API -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->

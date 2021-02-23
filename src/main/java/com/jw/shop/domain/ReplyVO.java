@@ -2,6 +2,8 @@ package com.jw.shop.domain;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReplyVO {
 
 //	create table reply (
@@ -18,6 +20,8 @@ public class ReplyVO {
 	private int bo_no;
 	private String re_content;
 	private String user_id;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date re_date;
 	
 	

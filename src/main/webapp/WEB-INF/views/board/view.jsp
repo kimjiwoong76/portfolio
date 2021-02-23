@@ -99,22 +99,22 @@
 									</c:if>
 								</div>
 								<div class="comment-body">
-									<div class="commentThread comment-thread">
-										<c:forEach var="reply" items="${reply}">
-										<div class="comment-article" data-commentid="31924343">
-											<div class="comment-info">
-												<span>${reply.user_id}</span> 
-												<span class="date">${reply.re_date}</span>
-												<c:if test="${shopMember.shop_id eq reply.user_id}">
-													<button class="co-btn btn-modify" data-con="${reply.re_no}" aria-label="수정">수정</button>
-											        <button class="co-btn btn-cancel"  aria-label="취소" style="display:none;">취소</button>
-											        <button class="co-btn btn-delete"  aria-label="삭제">삭제</button>
-										        </c:if>
-											</div>
-											<div class="comment-contents ${reply.re_no}">${reply.re_content}</div>
-										</div>
-										</c:forEach>
-									</div>
+									
+<%-- 										<c:forEach var="reply" items="${reply}"> --%>
+<%-- 										<div class="comment-article" data-commentid="${reply.re_no}"> --%>
+<!-- 											<div class="comment-info"> -->
+<%-- 												<span>${reply.user_id}</span>  --%>
+<%-- 												<span class="date">${reply.re_date}</span> --%>
+<%-- 												<c:if test="${shopMember.shop_id eq reply.user_id}"> --%>
+<%-- 													<button class="co-btn btn-modify" data-con="${reply.re_no}" aria-label="수정">수정</button> --%>
+<!-- 											        <button class="co-btn btn-cancel"  aria-label="취소" style="display:none;">취소</button> -->
+<!-- 											        <button class="co-btn btn-delete"  aria-label="삭제">삭제</button> -->
+<%-- 										        </c:if> --%>
+<!-- 											</div> -->
+<%-- 											<div class="comment-contents ${reply.re_no}">${reply.re_content}</div> --%>
+<!-- 										</div> -->
+<%-- 										</c:forEach> --%>
+									
 								</div>
 								<button class="nc-comment-more" style="display: none;">
 									<span class="txt">더보기</span>
@@ -133,8 +133,8 @@
 									<div class="left"></div>
 									<div class="right">
 										<span class="count-word"><em>0</em>/300</span>
-										<button type="button"
-											class="co-btn btn-confirm btn-contentUpdate" aria-label="수정">수정</button>
+										<button type="button" id="btn-contentUpdate"
+											class="co-btn btn-confirm btn-contentUpdate btn-contentUpdateClone" aria-label="수정">수정</button>
 									</div>
 								</div>
 							</div>
@@ -145,8 +145,85 @@
 		</div>
 	</div>
 </div>
+
+<c:choose>
+	<c:when test="${shopMember.shop_id != null}">
+		<c:set var="shopMemberID" value="${shopMember.shop_id}" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="shopMemberID" value="손님" />
+	</c:otherwise>
+</c:choose>
+
+
+
 <script>
 	$(function(){
+		getReplyList();
+		
+		function getFormatDate(date){
+			var year = date.getFullYear();                                 //yyyy
+			var month = (1 + date.getMonth());                     //M
+			month = month >= 10 ? month : '0' + month;     // month 두자리로 저장
+			var day = date.getDate();                                        //d
+			day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
+			return  year + '' + month + '' + day;
+		}
+		
+		function getReplyList(){
+			var b_no;
+			b_no = ${board.b_no};
+			$.ajax({
+		        type:'GET',
+		        url : "/reply/read/"+b_no,
+		        data : b_no,
+		        success : function(data){
+		            var html = "";
+		            var replyCnt = data.length;
+		            var replyId;
+		            var shopId;
+		            shopId = "${shopMemberID}";
+		            if(data.length > 0){
+		            	html += "<div class='commentThread comment-thread'>"
+		                for(i=0; i<data.length; i++){
+		                	replyId = data[i].USER_ID;
+		                	var date = new Date(data[i].RE_DATE);
+				            date = getFormatDate(date);
+		                    html += "<div class='comment-article' data-commentid='"+data[i].RE_NO+"'>";
+		                    	html += "<div class='comment-info'>";
+		                    		html += "<span>"+data[i].USER_ID+"</span>";
+		                    		html += "<span class='date'>"+date+"</span>"; 
+		                    		
+		                    		if(shopId == replyId){      
+			                    		html += "<button class='co-btn btn-modify' data-con='"+data[i].RE_NO+"' aria-label='수정'>수정</button>";
+			                    		html += "<button class='co-btn btn-cancel'  aria-label='취소' style='display:none;'>취소</button>";
+			                    		html += "<button class='co-btn btn-delete'  aria-label='삭제'>삭제</button>";
+		                    		}
+		                    	html += "</div>";
+		                    	html += "<div class='comment-contents " +data[i].RE_NO +"'>"+data[i].RE_CONTENT+"</div>";
+		                    html += "</div>";
+		                }
+		            	html += "</div>";
+		                
+		            } else {
+		                 
+		               console.log("실패");
+		                
+		            }
+		            
+//			            $("#cCnt").html(cCnt);
+		            $(".comment-body").html(html);
+		            
+		        },
+		        error:function(request,status,error){
+		            console.log("실패");
+		            console.log(request);
+		       }
+		        
+		    });
+		}
+
+		
 		$('.contentWrite').keyup(function (e){
 		    var content = $(this).val();
 		    $('.count-word em').text(content.length);    //글자수 실시간 카운팅
@@ -169,6 +246,7 @@
 					    success: function(data){
 					    	alert("댓글이 등록 되었습니다.");
 					    	$("[name=re_content]").val("");
+					    	getReplyList();
 					          
 					    },
 					    error: function(data){
@@ -177,17 +255,19 @@
 					  });
 				}
 			});
-			var clone = $(".comment-form-contentUpdate").clone();
-			$(".btn-modify").click(function(){
+			var clone = $(".comment-form-contentUpdate");
+			$(".board-comment").on("click", ".btn-modify", function(){ 
+// 				$(".btn-modify").css("display", "none");
+// 				clone.css("display", "none");
 				var parents = $(this).parents(".comment-article");
 				$(this).css("display","none");
 				$(this).siblings(".btn-cancel").css("display","inline-block");
 				parents.append(clone); 
 				parents.children(".comment-form-contentUpdate").css("display","block");
 				var text = parents.children(".comment-contents").text();
-				$(".comment-form-contentUpdate [name=re_content]").val(text);
+				$(".contentUpdate").val(text);
 			});
-			$(".btn-cancel").click(function(){
+			$(".board-comment").on("click", ".btn-cancel", function(){
 				var parents = $(this).parents(".comment-article");
 				$(this).css("display","none");
 				$(this).siblings(".btn-modify").css("display","inline-block");
@@ -204,46 +284,46 @@
 				}
 			});
 			
-			function getReplyList(){
-				$.ajax({
-			        type:'GET',
-			        url : "<c:url value='/reply/read'/>",
-			        dataType : "json",
-			        success : function(data){
-			            console.log(data);
-			            var html = "";
-			            var cCnt = data.length;
-			            
-			            if(data.length > 0){
-			                
-			                for(i=0; i<data.length; i++){
-			                    html += "<div>";
-			                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
-			                    html += data[i].comment + "<tr><td></td></tr>";
-			                    html += "</table></div>";
-			                    html += "</div>";
-			                }
-			                
-			            } else {
-			                
-			                html += "<div>";
-			                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-			                html += "</table></div>";
-			                html += "</div>";
-			                
-			            }
-			            
-			            $("#cCnt").html(cCnt);
-			            $("#commentList").html(html);
-			            
-			        },
-			        error:function(request,status,error){
-			            
-			       }
-			        
-			    });
-			}
+			$(".board-comment").on("click", ".btn-delete", function(){
+				var delete_confirm = confirm("정말 삭제 하시겠습니까?");
+				var reply_no = $(this).parents(".comment-article").data("commentid");
+				if(delete_confirm){
+					$.ajax({
+					 	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					    url: "/reply/delete/"+reply_no,
+					    type: "GET",
+					    success: function(data){
+					    	alert("댓글이 삭제되었습니다.");
+					    	getReplyList();
+					    },
+					    error: function(data){
+					    	alert("에러 입니다.");
+					    }
+					  });
+				}
+			});
 			
+			
+			$(".board-comment").on("click", "#btn-contentUpdate", function(){
+				var reply_no = $(this).parents(".comment-article").data("commentid");
+				var re_content = $(".contentUpdate").val();
+				$.ajax({
+				 	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				    url: "/reply/update/"+reply_no,
+				    data : {"re_content" : re_content, "re_no" : reply_no},
+				    type: "GET",
+				    success: function(data){
+				    	alert("댓글이 수정되었습니다.");
+				    	getReplyList();
+				          
+				    },
+				    error: function(data){
+				    	alert("에러 입니다.");
+				    }
+				  });
+			});
+		
+		
 	});
 </script>
 

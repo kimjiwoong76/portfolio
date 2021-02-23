@@ -122,20 +122,7 @@
                                 -->
                             </div>
                             <div class="item-blank">
-                                <div class="item-sns">
-                                    <ul>
-                                        <li>
-                                            <a href="#!">
-                                                <img src="/resources/img/item-instar.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#!">
-                                                <img src="/resources/img/item-facebook.png" alt="">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                         
                                 <div class="item-list-page">
                                     <a href="#!" onClick="history.back();">
                                         LIST

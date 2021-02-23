@@ -23,7 +23,7 @@
 		select shop_id, shop_pwd from shop_member where shop_id = #{shop_id}
 	</select>
 	<select id="userFindId" resultType="regMember">
-		select shop_id, shop_email, shop_name from shop_member where shop_email = #{shop_email}
+		select shop_id, shop_email, shop_name from shop_member where shop_id = #{shop_id} and shop_email = #{shop_email}
 	</select>
 	<update id="userFindPw" parameterType="regMember"> 
 		UPDATE shop_member 

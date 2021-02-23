@@ -18,9 +18,6 @@
                             <div class="pw_area input_area">
                                 <input type="password" name="shop_pwd" placeholder="비밀번호">
                             </div>
-                            <%-- <c:if test="${not empty loginNull}">
-								<p class="no_id_pw"><em>${loginNull}</em></p>
-							</c:if> --%>
                         </div>
                         <div class="login_form_btn">
                             <button class="login_form_submit">로그인</button>
@@ -36,6 +33,9 @@
                             <label for="auto_login">자동로그인</label>
                         </div> -->
                     </div>
+                    <c:if test="${not empty loginNull}">
+							<p class="no_id_pw"><em>${loginNull}</em></p>
+						</c:if>
                 </form>
             </div>
             <div class="form_inner">

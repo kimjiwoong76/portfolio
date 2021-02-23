@@ -138,14 +138,16 @@ public class UserServiceImpl implements UserService {
 						System.out.println("관리자님 환영합니다");
 						return "redirect:/adm.do";
 					} else {
-						return "/index";
+						System.out.println("아이디 비번 틀림");
+						model.addAttribute("loginNull", "아이디 또는 비밀번호가 틀렸습니다.");
+						return "/user/login";
 					}
+				} else {
+					System.out.println("아이디 비번 틀림");
+					model.addAttribute("loginNull", "아이디 또는 비밀번호가 틀렸습니다.");
+					return "/user/login";
 				}
-			} else {
-				System.out.println("아이디 비번 틀림");
-				model.addAttribute("loginNull", "아이디 또는 비밀번호가 틀렸습니다.");
-				return "/user/login";
-			}
+			} 
 		}
 		return "/index";
 		

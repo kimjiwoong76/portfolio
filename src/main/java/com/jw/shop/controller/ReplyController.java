@@ -1,9 +1,11 @@
 package com.jw.shop.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,17 +30,21 @@ public class ReplyController {
 		replyService.replyInsert(session, vo, bno);
 	}
 	
-	public void replyUpdate(HttpSession session, ReplyVO vo) {
-		
+	@GetMapping("/delete/{re_no}")
+	public void replyDelete(HttpSession session, ReplyVO vo, @PathVariable(required = false) Integer re_no) {
+		replyService.replyDelete(session, vo, re_no);
 	}
 	
-	public void replyDelete(HttpSession session, ReplyVO vo) {
-		
+	@GetMapping("/update/{re_no}")
+	public void replyUpdate(HttpSession session, ReplyVO vo, @PathVariable(required = false) Integer re_no) {
+		System.out.println(re_no);
+		System.out.println(vo);
+		replyService.replyUpdate(session, vo, re_no);
 	}
 	
-	@GetMapping("/read")
-	public List<ReplyVO> replyRead(ReplyVO vo) {
-		return replyService.replyRead(vo);
+	@GetMapping("/read/{b_no}")
+	public List<Map<String, Object>> replyRead(@PathVariable(required = false) Integer b_no, Model model) {
+		return replyService.replyRead(b_no, model);
 		
 	}
 	

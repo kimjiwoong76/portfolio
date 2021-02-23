@@ -1,10 +1,12 @@
 package com.jw.shop.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.jw.shop.domain.ReplyVO;
@@ -33,22 +35,23 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void replyDelete(HttpSession session, ReplyVO vo) {
+	public void replyDelete(HttpSession session, ReplyVO vo, Integer re_no) {
 		// TODO Auto-generated method stub
+		replyMapper.replyDelete(re_no);
 		
 	}
 
 	@Override
-	public void replyUpdate(HttpSession session, ReplyVO vo) {
+	public void replyUpdate(HttpSession session, ReplyVO vo, Integer re_no) {
 		// TODO Auto-generated method stub
-		
+		replyMapper.replyUpdate(vo);
 	}
 	
 	@Override
-	public List<ReplyVO> replyRead(ReplyVO vo) {
-		// 
+	public List<Map<String, Object>> replyRead(Integer b_no, Model model) {
 		
-		return null;
+		List<Map<String, Object>> result = replyMapper.replyRead2(b_no);
+		return result;
 
 	}
 

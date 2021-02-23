@@ -13,10 +13,15 @@
 	<select id="replyRead" resultType="reply">
 		select * from reply where bo_no = #{b_no} order by re_no desc
 	</select>
+	<select id="replyRead2" resultType="map">
+		select * from reply where bo_no = #{b_no} order by re_no desc
+<!-- 		select * (select to_char(sysdate, 'yy-mm-dd')) from reply where bo_no = #{b_no} order by re_no desc -->
+	</select>
 	<update id="replyUpdate">
-		update board set b_count = b_count+1 where b_no = #{bno}
+		update reply set re_content = #{re_content} where re_no = #{re_no}
 	</update>
 	<delete id="replyDelete">
+		delete from reply where re_no = #{re_no}
 	</delete>
 	
 	
