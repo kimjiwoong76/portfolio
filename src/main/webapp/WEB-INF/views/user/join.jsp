@@ -31,7 +31,7 @@
                         <label for="register_chk1">(필수)회원가입약관</label>
                     </div>
                     <div class="register_section_area">
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="">포트폴리오용 약관 입니다</textarea>
                     </div>
                 </div>
                 <div class="register_section">
